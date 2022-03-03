@@ -36,5 +36,10 @@ namespace NetOnRails
         public bool IsFailure => !IsSuccess;
         public TData Value => _value;
         public TError Error => _error;
+
+        public void OnSuccess(Action p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

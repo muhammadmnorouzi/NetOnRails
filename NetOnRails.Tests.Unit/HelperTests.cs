@@ -11,8 +11,7 @@ namespace NetOnRails.Tests.Unit
         {
             var obj = new object();
 
-            Result<object, Exception> succededResult =
-                CreateSuccededResult<object, Exception>(obj);
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
 
             succededResult.IsSuccess.ShouldBe(true);
             succededResult.IsFailure.ShouldBe(false);
@@ -25,8 +24,7 @@ namespace NetOnRails.Tests.Unit
         {
             var exc = new Exception();
 
-            Result<object, Exception> succededResult =
-                CreateFailedResult<object, Exception>(exc);
+            Result<object, Exception> succededResult = CreateFailedResult<object, Exception>(exc);
 
             succededResult.IsSuccess.ShouldBe(false);
             succededResult.IsFailure.ShouldBe(true);
