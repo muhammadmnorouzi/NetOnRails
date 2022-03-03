@@ -41,5 +41,21 @@ namespace NetOnRails.Tests.Unit
             //Then
             value.ShouldBe(expected);
         }
+
+        [Fact]
+        public void ShouldInvokeActionWithTDataOnResultSuccess()
+        {
+            //Given
+            int givenValue = 15;
+            int expected = 16;
+
+            Result<int, Exception> succededResult = CreateSuccededResult<int, Exception>(givenValue);
+
+            //When
+            succededResult.OnSuccess((data) => { givenValue = data + 1; });
+
+            //Then
+            givenValue.ShouldBe(expected);
+        }
     }
 }
