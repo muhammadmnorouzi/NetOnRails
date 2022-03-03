@@ -7,6 +7,19 @@ namespace NetOnRails.Tests.Unit
     public class OnSuccess : TestBase
     {
         [Fact]
+        public void ShouldReturnSameResultWithoutParameters()
+        {
+            //Given
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(new object());
+
+            //When
+            Result<object, Exception> result = succededResult.OnSuccess(() => { });
+
+            //Then
+            result.ShouldBe(succededResult);
+        }
+
+        [Fact]
         public void ShouldInvokeActionOnResultSuccess()
         {
             //Given
