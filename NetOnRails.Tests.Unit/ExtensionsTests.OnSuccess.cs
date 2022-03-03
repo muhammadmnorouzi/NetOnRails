@@ -25,5 +25,21 @@ namespace NetOnRails.Tests.Unit
             //Then
             givenValue.ShouldBe(expected);
         }
+
+        [Fact]
+        public void ShouldNotInvokeActionOnResultFailure()
+        {
+            //Given
+            int value = 15;
+            int expected = 15;
+
+            Result<int, Exception> succededResult = CreateFailedResult<int, Exception>(new Exception());
+
+            //When
+            succededResult.OnSuccess(() => { value = value + 1; });
+
+            //Then
+            value.ShouldBe(expected);
+        }
     }
 }
