@@ -14,10 +14,10 @@ namespace NetOnRails.Tests.Unit
             bool actionInvoked = false;
             bool expected = true;
 
-            Result<object, Exception> succededResult = CreateFailedResult<object, Exception>(exc);
+            Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(exc);
 
             //When
-            succededResult.OnFailure(() => { actionInvoked = true; });
+            failedResult.OnFailure(() => { actionInvoked = true; });
 
             //Then
             actionInvoked.ShouldBe(expected);
@@ -40,22 +40,24 @@ namespace NetOnRails.Tests.Unit
             actiondInvoked.ShouldBe(expected);
         }
 
-        //         [Fact]
-        //         public void OnFailure_ShouldInvokeActionWithTDataOnResultSuccess()
-        //         {
-        //             //Given
-        //             int givenValue = 15;
-        //             int expected = 16;
-        // 
-        //             Result<int, Exception> succededResult = CreateSuccededResult<int, Exception>(givenValue);
-        // 
-        //             //When
-        //             succededResult.OnSuccess((data) => { givenValue = data + 1; });
-        // 
-        //             //Then
-        //             givenValue.ShouldBe(expected);
-        //         }
-        // 
+        [Fact]
+        public void OnFailure_ShouldInvokeActionWithTDataOnResultFailure()
+        {
+            //Given
+            string errorMessage = "This is fault report.";
+            Exception exc = new Exception(errorMessage);
+            Exception expected = exc;
+            Exception actionParameter = default(Exception)!;
+
+            Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(exc);
+
+            //When
+            failedResult.OnFailure((exception) => { actionParameter = exception; });
+
+            //Then
+            actionParameter.ShouldBe(expected);
+        }
+
         //         [Fact]
         //         public void OnFailure_ShouldNotInvokeActionWithTDataOnResultFailure()
         //         {
