@@ -20,6 +20,19 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
+        public void ShouldReturnSameResultWithParameters()
+        {
+            //Given
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(new object());
+
+            //When
+            Result<object, Exception> result = succededResult.OnSuccess((obj) => { });
+
+            //Then
+            result.ShouldBe(succededResult);
+        }
+
+        [Fact]
         public void ShouldInvokeActionOnResultSuccess()
         {
             //Given
