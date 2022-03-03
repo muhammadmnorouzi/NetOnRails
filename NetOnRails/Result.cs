@@ -8,14 +8,14 @@ namespace NetOnRails
 {
     public struct Result
     {
-        public static Result<TData, TError> Success<TData, TError>(T value)
+        public static Result<TData, TError> Success<TData, TError>(TData value)
         {
-            return new Result<TData, TError>(value, true, default(TError));
+            return new Result<TData, TError>(value, true, default(TError)!);
         }
 
-        public static Result<TData, TError> Failure<TData, TError>(Exception error)
+        public static Result<TData, TError> Failure<TData, TError>(TError error)
         {
-            return new Result<TData, TError>(default(TData), false, error);
+            return new Result<TData, TError>(default(TData)!, false, error);
         }
     }
 

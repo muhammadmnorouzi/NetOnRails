@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="RailsExtensions.OnSuccess.cs" />
-    <Compile Remove="Result.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="RailsExtensions.OnSuccess.cs" />
     <None Include="Result.cs" />
   </ItemGroup>
