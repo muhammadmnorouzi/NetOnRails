@@ -22,25 +22,26 @@ namespace NetOnRails.Tests.Unit
             //Then
             actionInvoked.ShouldBe(expected);
         }
-        // 
+
+        [Fact]
+        public void OnFailure_ShouldNotInvokeActionOnResultSuccess()
+        {
+            //Given
+            bool actiondInvoked = false;
+            bool expected = false;
+
+            object obj = new object();
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
+
+            //When
+            succededResult.OnFailure(() => { actiondInvoked = true; });
+
+            //Then
+            actiondInvoked.ShouldBe(expected);
+        }
+
         //         [Fact]
-        //         public void ShouldNotInvokeActionOnResultFailure()
-        //         {
-        //             //Given
-        //             int value = 15;
-        //             int expected = 15;
-        // 
-        //             Result<int, Exception> succededResult = CreateFailedResult<int, Exception>(new Exception());
-        // 
-        //             //When
-        //             succededResult.OnSuccess(() => { value = value + 1; });
-        // 
-        //             //Then
-        //             value.ShouldBe(expected);
-        //         }
-        // 
-        //         [Fact]
-        //         public void ShouldInvokeActionWithTDataOnResultSuccess()
+        //         public void OnFailure_ShouldInvokeActionWithTDataOnResultSuccess()
         //         {
         //             //Given
         //             int givenValue = 15;
@@ -56,7 +57,7 @@ namespace NetOnRails.Tests.Unit
         //         }
         // 
         //         [Fact]
-        //         public void ShouldNotInvokeActionWithTDataOnResultFailure()
+        //         public void OnFailure_ShouldNotInvokeActionWithTDataOnResultFailure()
         //         {
         //             //Given
         //             int value = 15;
