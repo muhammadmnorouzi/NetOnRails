@@ -1,6 +1,6 @@
 using System;
-using Xunit;
 using Shouldly;
+using Xunit;
 
 namespace NetOnRails.Tests.Unit
 {
