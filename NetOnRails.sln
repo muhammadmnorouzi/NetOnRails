@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetOnRails", "NetOnRails\NetOnRails.csproj", "{4D9FDE09-EE07-49F0-B078-4F6FDDCE927F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetOnRails", "NetOnRails\NetOnRails.csproj", "{4D9FDE09-EE07-49F0-B078-4F6FDDCE927F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetOnRails.Tests.Unit", "NetOnRails.Tests.Unit\NetOnRails.Tests.Unit.csproj", "{6777154D-25BA-4B87-987C-9247D833AFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetOnRails.Tests.Unit", "NetOnRails.Tests.Unit\NetOnRails.Tests.Unit.csproj", "{6777154D-25BA-4B87-987C-9247D833AFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetOnRails.Examples.ConsoleApp", "NetOnRails.Examples.ConsoleApp\NetOnRails.Examples.ConsoleApp.csproj", "{20805EAA-5D25-4A3E-A732-170C6328ECA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6777154D-25BA-4B87-987C-9247D833AFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6777154D-25BA-4B87-987C-9247D833AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6777154D-25BA-4B87-987C-9247D833AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20805EAA-5D25-4A3E-A732-170C6328ECA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20805EAA-5D25-4A3E-A732-170C6328ECA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20805EAA-5D25-4A3E-A732-170C6328ECA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20805EAA-5D25-4A3E-A732-170C6328ECA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
