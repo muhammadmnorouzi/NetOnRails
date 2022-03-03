@@ -15,5 +15,13 @@ namespace NetOnRails
                 action();
             }
         }
+
+        public static void OnSuccess<TData, TError>(this Result<TData, TError> result, Action<TData> action)
+        {
+            if (result.IsSuccess)
+            {
+                action(result.Value);
+            }
+        }
     }
 }
