@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetOnRails.Tests.Unit
 {
-    internal partial class ExtensionsTests:TestBase
+    public partial class ExtensionsTests:TestBase
     {
     }
 }

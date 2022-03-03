@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace NetOnRails.Tests.Unit
 {
-    internal partial class ExtensionsTests
+    public partial class ExtensionsTests
     {
     }
 }
