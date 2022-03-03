@@ -29,7 +29,7 @@ namespace NetOnRails.Tests.Unit
             succededResult.IsSuccess.ShouldBe(false);
             succededResult.IsFailure.ShouldBe(true);
             succededResult.Error.ShouldBe(exc);
-            succededResult.Value.ShouldBeNull();
+            succededResult.Value.ShouldBe(default(object));
         }
     }
 }
