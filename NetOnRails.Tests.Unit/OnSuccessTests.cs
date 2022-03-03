@@ -8,10 +8,10 @@ using Xunit;
 
 namespace NetOnRails.Tests.Unit
 {
-    public partial class ExtensionsTests
+    public class OnSuccess : TestBase
     {
         [Fact]
-        public void OnSuccess_ShouldInvokeActionOnResultSuccess()
+        public void ShouldInvokeActionOnResultSuccess()
         {
             //Given
             int givenValue = 15;
@@ -27,7 +27,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnSuccess_ShouldNotInvokeActionOnResultFailure()
+        public void ShouldNotInvokeActionOnResultFailure()
         {
             //Given
             int value = 15;
@@ -43,7 +43,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnSuccess_ShouldInvokeActionWithTDataOnResultSuccess()
+        public void ShouldInvokeActionWithTDataOnResultSuccess()
         {
             //Given
             int givenValue = 15;
@@ -59,7 +59,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnSuccess_ShouldNotInvokeActionWithTDataOnResultFailure()
+        public void ShouldNotInvokeActionWithTDataOnResultFailure()
         {
             //Given
             int value = 15;

@@ -4,10 +4,10 @@ using Xunit;
 
 namespace NetOnRails.Tests.Unit
 {
-    public partial class ExtensionsTests
+    public class OnFailureTests : TestBase
     {
         [Fact]
-        public void OnFailure_ShouldInvokeActionOnResultFailure()
+        public void ShouldInvokeActionOnResultFailure()
         {
             //Given
             Exception exc = new Exception("This is failure report.");
@@ -24,7 +24,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnFailure_ShouldNotInvokeActionOnResultSuccess()
+        public void ShouldNotInvokeActionOnResultSuccess()
         {
             //Given
             bool actiondInvoked = false;
@@ -41,7 +41,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnFailure_ShouldInvokeActionWithTDataOnResultFailure()
+        public void ShouldInvokeActionWithTDataOnResultFailure()
         {
             //Given
             string errorMessage = "This is fault report.";
@@ -59,7 +59,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void OnFailure_ShouldNotInvokeActionWithTDataOnResultSuccess()
+        public void ShouldNotInvokeActionWithTDataOnResultSuccess()
         {
             //Given
             object obj = new object();
