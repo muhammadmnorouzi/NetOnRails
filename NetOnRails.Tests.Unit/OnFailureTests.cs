@@ -7,20 +7,33 @@ namespace NetOnRails.Tests.Unit
     public class OnFailureTests : TestBase
     {
         [Fact]
+        public void ShouldReturnSameResult()
+        {
+            //Given
+            Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(new Exception());
+
+            //When
+            Result<object, Exception> result = failedResult.OnFailure((_) => { });
+
+            //Then
+            result.ShouldBe(failedResult);
+        }
+
+        [Fact]
         public void ShouldInvokeActionOnResultFailure()
         {
             //Given
             Exception exc = new Exception("This is failure report.");
-            bool actionInvoked = false;
-            bool expected = true;
+            Exception expected = exc;
+            Exception paramValue = default(Exception)!;
 
             Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(exc);
 
             //When
-            failedResult.OnFailure(() => { actionInvoked = true; });
+            failedResult.OnFailure((exception) => { paramValue = exception; });
 
             //Then
-            actionInvoked.ShouldBe(expected);
+            paramValue.ShouldBe(expected);
         }
 
         [Fact]
@@ -34,45 +47,10 @@ namespace NetOnRails.Tests.Unit
             Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
 
             //When
-            succededResult.OnFailure(() => { actiondInvoked = true; });
+            succededResult.OnFailure((_) => { actiondInvoked = true; });
 
             //Then
             actiondInvoked.ShouldBe(expected);
-        }
-
-        [Fact]
-        public void ShouldInvokeActionWithTDataOnResultFailure()
-        {
-            //Given
-            string errorMessage = "This is fault report.";
-            Exception exc = new Exception(errorMessage);
-            Exception expected = exc;
-            Exception actionParameter = default(Exception)!;
-
-            Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(exc);
-
-            //When
-            failedResult.OnFailure((exception) => { actionParameter = exception; });
-
-            //Then
-            actionParameter.ShouldBe(expected);
-        }
-
-        [Fact]
-        public void ShouldNotInvokeActionWithTDataOnResultSuccess()
-        {
-            //Given
-            object obj = new object();
-            bool expected = false;
-            bool actionInvoked = false;
-
-            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
-
-            //When
-            succededResult.OnFailure((exception) => { actionInvoked = true; });
-
-            //Then
-            actionInvoked.ShouldBe(expected);
         }
     }
 }

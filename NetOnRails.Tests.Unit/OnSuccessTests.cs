@@ -4,29 +4,16 @@ using Xunit;
 
 namespace NetOnRails.Tests.Unit
 {
-    public class OnSuccess : TestBase
+    public class OnSuccessTests : TestBase
     {
         [Fact]
-        public void ShouldReturnSameResultWithoutParameters()
+        public void ShouldReturnSameResult()
         {
             //Given
             Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(new object());
 
             //When
-            Result<object, Exception> result = succededResult.OnSuccess(() => { });
-
-            //Then
-            result.ShouldBe(succededResult);
-        }
-
-        [Fact]
-        public void ShouldReturnSameResultWithParameters()
-        {
-            //Given
-            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(new object());
-
-            //When
-            Result<object, Exception> result = succededResult.OnSuccess((obj) => { });
+            Result<object, Exception> result = succededResult.OnSuccess((_) => { });
 
             //Then
             result.ShouldBe(succededResult);
@@ -36,64 +23,33 @@ namespace NetOnRails.Tests.Unit
         public void ShouldInvokeActionOnResultSuccess()
         {
             //Given
-            int givenValue = 15;
-            int expected = 16;
+            object obj = new object();
+            object expected = obj;
+            object paramValue = default(object)!;
 
-            Result<int, Exception> succededResult = CreateSuccededResult<int, Exception>(givenValue);
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
 
             //When
-            succededResult.OnSuccess(() => { givenValue = givenValue + 1; });
+            succededResult.OnSuccess((@object) => { paramValue = @object; });
 
             //Then
-            givenValue.ShouldBe(expected);
+            paramValue.ShouldBe(expected);
         }
 
         [Fact]
         public void ShouldNotInvokeActionOnResultFailure()
         {
             //Given
-            int value = 15;
-            int expected = 15;
+            bool actionInvoked = false;
+            bool expected = false;
 
-            Result<int, Exception> failedResult = CreateFailedResult<int, Exception>(new Exception());
-
-            //When
-            failedResult.OnSuccess(() => { value = value + 1; });
-
-            //Then
-            value.ShouldBe(expected);
-        }
-
-        [Fact]
-        public void ShouldInvokeActionWithTDataOnResultSuccess()
-        {
-            //Given
-            int givenValue = 15;
-            int expected = 16;
-
-            Result<int, Exception> succededResult = CreateSuccededResult<int, Exception>(givenValue);
+            Result<object, Exception> failedResult = CreateFailedResult<object, Exception>(new Exception());
 
             //When
-            succededResult.OnSuccess((data) => { givenValue = data + 1; });
+            failedResult.OnSuccess((_) => { actionInvoked = true; });
 
             //Then
-            givenValue.ShouldBe(expected);
-        }
-
-        [Fact]
-        public void ShouldNotInvokeActionWithTDataOnResultFailure()
-        {
-            //Given
-            int value = 15;
-            int expected = 15;
-
-            Result<int, Exception> failedResult = CreateFailedResult<int, Exception>(new Exception());
-
-            //When
-            failedResult.OnSuccess((data) => { value = data + 1; });
-
-            //Then
-            value.ShouldBe(expected);
+            actionInvoked.ShouldBe(expected);
         }
     }
 }
