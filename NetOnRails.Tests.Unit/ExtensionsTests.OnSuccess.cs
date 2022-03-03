@@ -11,7 +11,7 @@ namespace NetOnRails.Tests.Unit
     public partial class ExtensionsTests
     {
         [Fact]
-        public void ShouldInvokeActionOnResultSuccess()
+        public void OnSuccess_ShouldInvokeActionOnResultSuccess()
         {
             //Given
             int givenValue = 15;
@@ -27,7 +27,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void ShouldNotInvokeActionOnResultFailure()
+        public void OnSuccess_ShouldNotInvokeActionOnResultFailure()
         {
             //Given
             int value = 15;
@@ -43,7 +43,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void ShouldInvokeActionWithTDataOnResultSuccess()
+        public void OnSuccess_ShouldInvokeActionWithTDataOnResultSuccess()
         {
             //Given
             int givenValue = 15;
@@ -59,7 +59,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void ShouldNotInvokeActionWithTDataOnResultFailure()
+        public void OnSuccess_ShouldNotInvokeActionWithTDataOnResultFailure()
         {
             //Given
             int value = 15;
