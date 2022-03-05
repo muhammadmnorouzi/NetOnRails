@@ -7,6 +7,23 @@ namespace NetOnRails.Tests.Unit
     public class MapTests : TestBase
     {
         [Fact]
+        public void ShouldMapOnResultSuccess()
+        {
+            //Given
+            object givenData = new object();
+            string expectedData = givenData.GetHashCode().ToString();
+            Result<object, Exception> givenResult = CreateSuccededResult<object, Exception>(givenData);
+
+            //When
+            Result<string, Exception> mapedResult = givenResult.Map(
+                (data) => data.GetHashCode().ToString());
+
+            //Then
+            mapedResult.Value.ShouldBe(expectedData);
+            mapedResult.Error.ShouldBe(default(Exception));
+        }
+
+        [Fact]
         public void ShouldMapOnResultFailure()
         {
             //Given
