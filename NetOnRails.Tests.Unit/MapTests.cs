@@ -15,8 +15,7 @@ namespace NetOnRails.Tests.Unit
             Result<object, Exception> givenResult = CreateFailedResult<object, Exception>(givenError);
 
             //When
-            Result<string, Exception> mapedResult = givenResult.Map<string, Exception>(
-                givenResult,
+            Result<string, Exception> mapedResult = givenResult.Map(
                 (data) => data.GetHashCode().ToString());
 
             //Then

@@ -30,10 +30,5 @@ namespace NetOnRails
         public bool IsFailure => !IsSuccess;
         public TData Value => _value;
         public TError Error => _error;
-
-        public Result<T1, T2> Map<T1, T2>(Result<object, T2> givenResult, Func<object, object> p)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
