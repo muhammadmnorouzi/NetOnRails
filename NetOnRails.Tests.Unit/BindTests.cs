@@ -7,7 +7,7 @@ namespace NetOnRails.Tests.Unit
     public class BindTests : TestBase
     {
         [Fact]
-        public void BindOnResultSuccess()
+        public void ShouldBindOnResultSuccess()
         {
             //Given 
             object obj = new object();
@@ -26,7 +26,7 @@ namespace NetOnRails.Tests.Unit
         }
 
         [Fact]
-        public void BindOnResultFailure()
+        public void ShouldBindOnResultFailure()
         {
             //Given 
             Exception exc = new Exception();
