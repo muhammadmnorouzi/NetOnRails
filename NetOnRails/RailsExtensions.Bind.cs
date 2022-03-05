@@ -4,7 +4,7 @@ namespace NetOnRails
     {
         public static Result<TDataOut, TError> Bind<TDataIn, TError, TDataOut>(
             this Result<TDataIn, TError> result,
-            Func<TDataIn, Result<TDataOut, TError>> switchFunction)
+            Func<TDataIn, Result<TDataOut, TError>> switchFunction!!)
         {
             return result.IsSuccess
                 ? switchFunction(result.Value)

@@ -1,4 +1,4 @@
-﻿namespace NetOnRails
+namespace NetOnRails
 {
     public struct Result
     {

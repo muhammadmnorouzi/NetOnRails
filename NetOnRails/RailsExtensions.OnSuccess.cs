@@ -2,7 +2,9 @@
 {
     public static partial class RailsExtensions
     {
-        public static Result<TData, TError> OnSuccess<TData, TError>(this Result<TData, TError> result, Action<TData> action)
+        public static Result<TData, TError> OnSuccess<TData, TError>(
+            this Result<TData, TError> result,
+            Action<TData> action!!)
         {
             if (result.IsSuccess)
             {
