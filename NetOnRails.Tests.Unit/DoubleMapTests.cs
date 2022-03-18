@@ -11,11 +11,11 @@ namespace NetOnRails.Tests.Unit
         public void ShouldExecuteOnSuccessOnResultSuccess()
         {
             //Given 
-            object obj = new object();
-            int expectedHashCode = obj.GetHashCode();
+            object givenValue = new();
+            int expectedHashCode = givenValue.GetHashCode();
             bool onFailureExecuted = false;
 
-            Result<object, Exception> result = CreateSuccededResult<object, Exception>(obj);
+            Result<object, Exception> result = CreateSuccededResult<object, Exception>(givenValue);
 
             //When
             Result<int, Exception> doubleMapResult = result

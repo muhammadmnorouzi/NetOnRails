@@ -9,26 +9,26 @@ namespace NetOnRails.Tests.Unit
         [Fact]
         public void ResultShouldHaveProperValuesWhenIsSucceded()
         {
-            var obj = new object();
+            object givenValue = new();
 
-            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(givenValue);
 
             succededResult.IsSuccess.ShouldBe(true);
             succededResult.IsFailure.ShouldBe(false);
             succededResult.Error.ShouldBeNull();
-            succededResult.Value.ShouldBe(obj);
+            succededResult.Value.ShouldBe(givenValue);
         }
 
         [Fact]
         public void ResultShouldHaveProperValuesWhenIsFailed()
         {
-            var exc = new Exception();
+            Exception givenError = new();
 
-            Result<object, Exception> succededResult = CreateFailedResult<object, Exception>(exc);
+            Result<object, Exception> succededResult = CreateFailedResult<object, Exception>(givenError);
 
             succededResult.IsSuccess.ShouldBe(false);
             succededResult.IsFailure.ShouldBe(true);
-            succededResult.Error.ShouldBe(exc);
+            succededResult.Error.ShouldBe(givenError);
             succededResult.Value.ShouldBe(default(object));
         }
     }

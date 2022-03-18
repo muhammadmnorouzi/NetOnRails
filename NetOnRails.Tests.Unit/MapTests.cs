@@ -10,9 +10,9 @@ namespace NetOnRails.Tests.Unit
         public void ShouldMapOnResultSuccess()
         {
             //Given
-            object givenData = new object();
-            string expectedData = givenData.GetHashCode().ToString();
-            Result<object, Exception> givenResult = CreateSuccededResult<object, Exception>(givenData);
+            object givenValue = new();
+            string expectedData = givenValue.GetHashCode().ToString();
+            Result<object, Exception> givenResult = CreateSuccededResult<object, Exception>(givenValue);
 
             //When
             Result<string, Exception> mapedResult = givenResult.Map(

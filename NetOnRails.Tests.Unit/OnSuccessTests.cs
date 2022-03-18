@@ -23,11 +23,11 @@ namespace NetOnRails.Tests.Unit
         public void ShouldInvokeActionOnResultSuccess()
         {
             //Given
-            object obj = new object();
-            object expected = obj;
+            object givenValue = new();
+            object expected = givenValue;
             object paramValue = default(object)!;
 
-            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
+            Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(givenValue);
 
             //When
             succededResult.OnSuccess((@object) => { paramValue = @object; });

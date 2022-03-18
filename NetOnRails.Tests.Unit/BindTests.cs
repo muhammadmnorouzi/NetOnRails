@@ -10,10 +10,10 @@ namespace NetOnRails.Tests.Unit
         public void ShouldBindOnResultSuccess()
         {
             //Given 
-            object obj = new object();
-            string expected = obj.GetHashCode().ToString();
+            object givenValue = new();
+            string expected = givenValue.GetHashCode().ToString();
 
-            Result<object, Exception> result = CreateSuccededResult<object, Exception>(obj);
+            Result<object, Exception> result = CreateSuccededResult<object, Exception>(givenValue);
 
             //When
             Result<string, Exception> binded = result
@@ -29,10 +29,10 @@ namespace NetOnRails.Tests.Unit
         public void ShouldBindOnResultFailure()
         {
             //Given 
-            Exception exc = new Exception();
-            Exception expected = exc;
+            Exception givenError = new();
+            Exception expected = givenError;
 
-            Result<object, Exception> result = CreateFailedResult<object, Exception>(exc);
+            Result<object, Exception> result = CreateFailedResult<object, Exception>(givenError);
 
             //When
             Result<string, Exception> binded = result

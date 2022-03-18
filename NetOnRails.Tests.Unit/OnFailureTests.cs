@@ -43,7 +43,7 @@ namespace NetOnRails.Tests.Unit
             bool actiondInvoked = false;
             bool expected = false;
 
-            object obj = new object();
+            object obj = new();
             Result<object, Exception> succededResult = CreateSuccededResult<object, Exception>(obj);
 
             //When
